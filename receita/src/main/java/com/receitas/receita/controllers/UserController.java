@@ -31,4 +31,24 @@ public class UserController {
     public Optional<User> pegandoPeloID(@PathVariable Long id) {
         return userRepository.findById(id);
     }
+
+    @PutMapping("/{id}")
+    public void editarUsuario(@PathVariable Long id, @RequestBody User user) {
+        Optional<User> optionalUser = userRepository.findById(id);
+
+        if(optionalUser.isPresent()) {
+            User usuario = optionalUser.get();
+            usuario.setName(user.getName());
+            usuario.setEmail(user.getEmail());
+            usuario.setPassword(user.getPassword());
+
+            userRepository.save(usuario);
+        }
+    }
+
+    @DeleteMapping
+    public void DeletarUsuario(@PathVariable Long id) {
+        userRepository.deleteById(id);
+    }
+
 }
