@@ -1,5 +1,6 @@
 package com.receitas.receita.models;
 
+import com.receitas.receita.DTOS.DTOUser;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,4 +22,9 @@ public class User {
     private String email;
     private String password;
 
+    public User(DTOUser usuario) {
+        this.name = usuario.name();
+        this.email = usuario.email();
+        this.password = usuario.password();
+    }
 }
