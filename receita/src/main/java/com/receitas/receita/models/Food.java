@@ -1,5 +1,6 @@
 package com.receitas.receita.models;
 
+import com.receitas.receita.DTOS.DTOFood;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,4 +18,10 @@ public class Food {
     private String nome;
     private String image;
     Double price;
+
+    public Food(DTOFood data) {
+        this.nome = data.nome();
+        this.image = data.image();
+        this.price = data.price();
+    }
 }

@@ -1,5 +1,6 @@
 package com.receitas.receita.models;
 
+import com.receitas.receita.DTOS.DTORevenue;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,4 +19,8 @@ public class Revenue {
     private String nome;
     private String text;
 
+    public Revenue(DTORevenue data) {
+        this.nome = data.nome();
+        this.text = data.text();
+    }
 }
